@@ -3,7 +3,11 @@
     "allow": [
       "Bash(git init)",
       "Bash(git remote add origin https://github.com/Amaankvofdd06021999/genesys-now.git)",
-      "Bash(git add .)"
+      "Bash(git add .)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: Genesys Now website with mobile responsiveness and hero background\n\n- Added complete responsive design for all breakpoints (desktop, tablet, mobile)\n- Integrated hero background image (bghero.png)\n- Updated logo implementation (logoGenesys.svg)\n- Optimized for mobile devices with proper touch targets\n- Removed animations for immediate content visibility\n- All sections fully responsive and accessible\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push -u origin master)",
+      "Bash(git commit -m \"Rename to index.html for GitHub Pages deployment\")",
+      "Bash(git push)"
     ],
     "deny": [],
     "ask": []
