@@ -221,12 +221,13 @@
 }
 </script>
 
-<!-- Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<link rel="stylesheet" href="styles.css">
+<!-- Preload critical CSS -->
+<link rel="preload" href="styles.min.css" as="style">
+<link rel="stylesheet" href="styles.min.css">
+
+<!-- Preload critical font -->
+<link rel="preload" href="fonts/MartianBThai-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="fonts/MartianBThai-Bold.otf" as="font" type="font/otf" crossorigin>
 </head>
 <body>
 
@@ -242,7 +243,7 @@
 <nav class="nav">
   <div class="nav__inner">
     <a href="index.html" class="nav__logo">
-      <img src="logo/GENESYS-NOW-MAIN.png" alt="Genesys Now - Digital Systems Built Right" style="width: 155px; height: 44px; object-fit: cover; object-position: center; display: block;">
+      <img src="logo/GENESYS-NOW-MAIN.png" alt="Genesys Now - Digital Systems Built Right" width="155" height="44" style="width: 155px; height: 44px; object-fit: cover; object-position: center; display: block;">
     </a>
     <ul class="nav__links">
       <li><a href="#approach">Approach</a></li>
@@ -271,6 +272,7 @@
   </div>
 </nav>
 
+<main>
 <!-- ========== HERO ========== -->
 <section class="hero" id="main-content">
   <div class="hero__grid">
@@ -533,7 +535,7 @@
             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
           </svg>
         </div>
-        <h4 class="support-item__title">Performance Monitoring</h4>
+        <h3 class="support-item__title">Performance Monitoring</h3>
         <p class="support-item__desc">Continuous system health tracking and proactive issue detection.</p>
       </div>
       <div class="support-item scroll-reveal">
@@ -543,7 +545,7 @@
             <path d="M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
           </svg>
         </div>
-        <h4 class="support-item__title">System Updates</h4>
+        <h3 class="support-item__title">System Updates</h3>
         <p class="support-item__desc">Regular updates, security patches, and dependency management.</p>
       </div>
       <div class="support-item scroll-reveal">
@@ -552,7 +554,7 @@
             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
           </svg>
         </div>
-        <h4 class="support-item__title">Feature Enhancements</h4>
+        <h3 class="support-item__title">Feature Enhancements</h3>
         <p class="support-item__desc">Iterative improvements based on usage data and evolving needs.</p>
       </div>
       <div class="support-item scroll-reveal">
@@ -562,7 +564,7 @@
             <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
           </svg>
         </div>
-        <h4 class="support-item__title">Security Patches</h4>
+        <h3 class="support-item__title">Security Patches</h3>
         <p class="support-item__desc">Timely vulnerability remediation and compliance assurance.</p>
       </div>
       <div class="support-item scroll-reveal">
@@ -572,7 +574,7 @@
             <polyline points="17 6 23 6 23 12"/>
           </svg>
         </div>
-        <h4 class="support-item__title">Scalability Planning</h4>
+        <h3 class="support-item__title">Scalability Planning</h3>
         <p class="support-item__desc">Infrastructure readiness as your operations grow and evolve.</p>
       </div>
       <div class="support-item scroll-reveal">
@@ -581,7 +583,7 @@
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
           </svg>
         </div>
-        <h4 class="support-item__title">Technical Consultation</h4>
+        <h3 class="support-item__title">Technical Consultation</h3>
         <p class="support-item__desc">Ongoing strategic guidance for technology decisions and direction.</p>
       </div>
     </div>
@@ -604,7 +606,7 @@
           </svg>
         </div>
         <span class="why-item__number">01</span>
-        <h4 class="why-item__title">Structured System Thinking</h4>
+        <h3 class="why-item__title">Structured System Thinking</h3>
         <p class="why-item__desc">We approach every project with architectural rigor and systematic planning.</p>
       </div>
       <div class="why-item scroll-reveal">
@@ -615,7 +617,7 @@
           </svg>
         </div>
         <span class="why-item__number">02</span>
-        <h4 class="why-item__title">Clean Architecture</h4>
+        <h3 class="why-item__title">Clean Architecture</h3>
         <p class="why-item__desc">Codebases that are readable, maintainable, and built for longevity.</p>
       </div>
       <div class="why-item scroll-reveal">
@@ -625,7 +627,7 @@
           </svg>
         </div>
         <span class="why-item__number">03</span>
-        <h4 class="why-item__title">Process-Driven Development</h4>
+        <h3 class="why-item__title">Process-Driven Development</h3>
         <p class="why-item__desc">Repeatable methodologies that deliver consistent, predictable results.</p>
       </div>
     </div>
@@ -709,12 +711,14 @@
   </div>
 </section>
 
+</main>
+
 <!-- ========== FOOTER ========== -->
 <footer class="footer">
   <div class="grid">
     <div class="footer__top">
       <div class="footer__brand">
-        <img src="logo/GENESYS-NOW-WHITE.png" alt="Genesys Now - Digital Systems Agency" style="width: 200px; height: 60px; object-fit: cover; object-position: center; margin-bottom: var(--space-3); display: block;">
+        <img src="logo/GENESYS-NOW-WHITE.png" alt="Genesys Now - Digital Systems Agency" loading="lazy" style="width: 200px; height: 60px; object-fit: cover; object-position: center; margin-bottom: var(--space-3); display: block;">
         <p class="footer__brand-tagline">Digital Systems. Structured for Growth.</p>
       </div>
       <div class="footer__col" style="grid-column: 7 / 9;">
@@ -755,7 +759,11 @@
   </div>
 </footer>
 
-<script src="main.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="main.min.js" defer></script>
 
 </body>
 </html>
