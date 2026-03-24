@@ -64,8 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = isActive ? 'hidden' : '';
     });
 
-    // Close menu when clicking a link
-    mobileLinks.forEach(link => {
+    // Close menu when clicking any link (nav links + CTA)
+    const allMobileLinks = mobileMenu.querySelectorAll('a');
+    allMobileLinks.forEach(link => {
       link.addEventListener('click', () => {
         navToggle.classList.remove('active');
         mobileMenu.classList.remove('active');
