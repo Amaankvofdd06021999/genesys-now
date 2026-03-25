@@ -295,9 +295,8 @@ img[loading="lazy"].loaded {
 .hero__actions,
 .hero__scroll {
   opacity: 0;
-  filter: blur(8px);
   transform: translateY(20px);
-  will-change: opacity, filter, transform;
+  will-change: opacity, transform;
 }
 
 @keyframes fadeInUp {
@@ -354,9 +353,8 @@ img[loading="lazy"].loaded {
 .word-split .word {
   display: inline-block;
   opacity: 0;
-  filter: blur(8px);
   transform: translateY(6px);
-  will-change: opacity, filter, transform;
+  will-change: opacity, transform;
 }
 
 .word-split .word-space {
@@ -385,9 +383,8 @@ img[loading="lazy"].loaded {
 /* Services header GSAP-driven — hidden until GSAP animates */
 .services__header.gsap-reveal {
   opacity: 0;
-  filter: blur(6px);
   transform: translateY(30px);
-  will-change: opacity, filter, transform;
+  will-change: opacity, transform;
 }
 
 /* Accessibility - Respect user preferences */

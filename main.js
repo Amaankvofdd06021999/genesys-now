@@ -4,14 +4,8 @@
 window.addEventListener('load', () => {
   const pageLoader = document.getElementById('pageLoader');
   if (pageLoader) {
-    // Wait a bit to ensure smooth transition
-    setTimeout(() => {
-      pageLoader.classList.add('hidden');
-      // Remove from DOM after transition
-      setTimeout(() => {
-        pageLoader.remove();
-      }, 500);
-    }, 200);
+    pageLoader.classList.add('hidden');
+    setTimeout(() => { pageLoader.remove(); }, 400);
   }
 });
 
@@ -433,7 +427,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1) Label — fade in as a block
     heroTl.to('.hero__label', {
       opacity: 1,
-      filter: 'blur(0px)',
       y: 0,
       duration: 0.6,
       ease: 'power3.out'
@@ -447,8 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const titleWords = splitIntoWords(heroTitle);
       heroTl.to(titleWords, {
         opacity: 1,
-        filter: 'blur(0px)',
-        y: 0,
+          y: 0,
         duration: 0.45,
         ease: 'power2.out',
         stagger: 0.05
@@ -462,8 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const descWords = splitIntoWords(heroDesc);
       heroTl.to(descWords, {
         opacity: 1,
-        filter: 'blur(0px)',
-        y: 0,
+          y: 0,
         duration: 0.4,
         ease: 'power2.out',
         stagger: 0.025
@@ -473,7 +464,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4) Actions — fade in as a block
     heroTl.to('.hero__actions', {
       opacity: 1,
-      filter: 'blur(0px)',
       y: 0,
       duration: 0.6,
       ease: 'power3.out'
@@ -482,7 +472,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5) Scroll indicator
     heroTl.to('.hero__scroll', {
       opacity: 1,
-      filter: 'blur(0px)',
       y: 0,
       duration: 0.5,
       ease: 'power3.out'
@@ -497,8 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Reveal the header container
       gsap.to(servicesHeader, {
         opacity: 1,
-        filter: 'blur(0px)',
-        y: 0,
+          y: 0,
         duration: 0.6,
         ease: 'power3.out',
         scrollTrigger: {
@@ -516,8 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gsap.to(words, {
           opacity: 1,
-          filter: 'blur(0px)',
-          y: 0,
+              y: 0,
           duration: 0.5,
           ease: 'power2.out',
           stagger: 0.04,
@@ -575,9 +562,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// HERO 3D PARTICLE SYSTEM
+// HERO 3D PARTICLE SYSTEM (deferred to reduce TBT)
 // ============================================
-(function(){
+(window.requestIdleCallback||function(cb){setTimeout(cb,80)})(function(){
   if (typeof THREE === 'undefined') return;
 
   const container = document.getElementById('canvas-container');
@@ -634,7 +621,7 @@ document.addEventListener('DOMContentLoaded', () => {
     new THREE.Color(0xF07080),
   ];
 
-  const PARTICLE_COUNT = 18000;
+  const PARTICLE_COUNT = 12000;
 
   function sampleBox(w,h,d,count){
     const pts=[];
@@ -805,7 +792,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const shapeGenerators = [genMonitor,genServer,genHub,genCard,genGear,genChart];
-  const shapes = shapeGenerators.map(fn=>fn());
+  // Generate only first shape immediately; defer rest to reduce TBT
+  const shapes = new Array(shapeGenerators.length);
+  shapes[0] = shapeGenerators[0]();
+  var shapesReady = 1;
+  function generateRemainingShapes(){
+    for(var s=shapesReady;s<shapeGenerators.length;s++){
+      shapes[s]=shapeGenerators[s]();
+    }
+    shapesReady=shapeGenerators.length;
+  }
+  (window.requestIdleCallback||function(cb){setTimeout(cb,100)})(generateRemainingShapes);
 
   const positions = new Float32Array(PARTICLE_COUNT*3);
   const colors = new Float32Array(PARTICLE_COUNT*3);
@@ -855,6 +852,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function goToShape(idx){
     if(idx===currentShape && morphT>=1) return;
+    // Generate shape on demand if not yet ready
+    if(!shapes[idx]) shapes[idx]=shapeGenerators[idx]();
     const posArr=geom.attributes.position.array;
     const s=shapes[idx];
     for(let i=0;i<PARTICLE_COUNT*3;i++){targetFrom[i]=posArr[i];targetTo[i]=s[i];}
