@@ -54,8 +54,8 @@
   --color-blue-white: #EEF0F4;
   --color-gray-100: #F7F7F7;
   --color-gray-200: #E8E8E8;
-  --color-gray-400: #757575; /* Improved from #A0A0A0 for better contrast */
-  --color-gray-500: #5F5F5F; /* Improved from #6E6E6E for better contrast */
+  --color-gray-400: #333333;
+  --color-gray-500: #1A1A1A;
   --color-gray-600: #000000;
   --color-gray-800: #000000;
 
@@ -233,9 +233,9 @@ img[loading="lazy"].loaded {
 }
 
 .label {
-  font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-red);
 }
