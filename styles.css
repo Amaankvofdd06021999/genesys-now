@@ -1147,7 +1147,7 @@ img[loading="lazy"].loaded {
   grid-column: 1 / 7;
   font-size: var(--text-lg);
   line-height: 1.7;
-  color: var(--color-gray-400);
+  color: rgba(255,255,255,0.55);
   padding-top: var(--space-7);
   max-width: 50ch;
 }
@@ -1182,7 +1182,7 @@ img[loading="lazy"].loaded {
 .support-item__desc {
   font-size: var(--text-sm);
   line-height: 1.6;
-  color: var(--color-gray-400);
+  color: rgba(255,255,255,0.45);
   max-width: 30ch;
 }
 
@@ -1510,7 +1510,7 @@ select.form-input {
 
 .footer__brand-tagline {
   font-size: var(--text-sm);
-  color: var(--color-gray-400);
+  color: rgba(255,255,255,0.5);
   max-width: 30ch;
 }
 
@@ -1523,7 +1523,7 @@ select.form-input {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-gray-400);
+  color: rgba(255,255,255,0.4);
   margin-bottom: var(--space-5);
 }
 
@@ -1555,7 +1555,7 @@ select.form-input {
 
 .footer__copy {
   font-size: var(--text-xs);
-  color: var(--color-gray-400);
+  color: rgba(255,255,255,0.4);
   letter-spacing: 0.04em;
 }
 
@@ -1567,7 +1567,7 @@ select.form-input {
 
 .footer__legal a {
   font-size: var(--text-xs);
-  color: var(--color-gray-400);
+  color: rgba(255,255,255,0.45);
   transition: color 0.2s ease;
 }
 
